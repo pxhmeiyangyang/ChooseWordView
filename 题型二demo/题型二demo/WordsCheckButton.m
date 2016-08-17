@@ -29,12 +29,13 @@
     float height = CGRectGetHeight(self.frame);
     _image = [[UIImageView alloc]initWithFrame:CGRectMake(15, height * 0.25, height * 0.5, height * 0.5)];
     [self addSubview:_image];
-    view = [[CodeView alloc]initWithFrame:CGRectMake(0, 0, width * 0.5, height * 0.5) LineColor:kBlueColor textFont:height * 0.3];
+    view = [[CodeView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.5, height * 0.5) LineColor:kBlueColor textFont:height * 0.3];
     view.userInteractionEnabled = NO;
     [self addSubview:view];
     
     view.hasUnderLine = YES;
 }
+
 
 -(void)setAnswer:(NSString *)answer{
     float height = CGRectGetHeight(self.frame);

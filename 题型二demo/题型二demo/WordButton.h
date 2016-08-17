@@ -12,6 +12,10 @@
 
 @interface WordButton : UIButton
 
+
+@property(nonatomic,assign)CGPoint toPosition;
+
 -(void)animationShow;
+-(void)animationDismiss;
 
 @end

@@ -86,6 +86,11 @@
     NSString* word    = words[sender.tag];
     _checkBtn.content = [_checkBtn.content stringByAppendingString:word];
     [_chooseBtnIndex addObject:[NSNumber numberWithInteger:sender.tag]];
+    //计算button的终点位置
+    float xRatio = kScreenWidth * 0.5 - kScreenWidth * 0.8 / 15.0 * words.count * 0.5;
+    float yRatio = _checkBtn.center.y;
+    sender.toPosition = CGPointMake(xRatio, yRatio);
+    [sender animationDismiss];
 }
 
 - (void)viewDidLoad {

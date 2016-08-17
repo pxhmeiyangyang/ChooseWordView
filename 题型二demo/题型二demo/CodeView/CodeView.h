@@ -10,6 +10,13 @@
 
 #import "NSString+StringToWords.h"
 
+
+#define Space 5
+#define LineWidth (self.frame.size.width - lineNum * 2 * Space)/lineNum
+#define LineHeight 2
+
+#define BaseLineNum 15.0
+
 typedef NS_ENUM(NSInteger,CodeViewType) {
     CodeViewTypeCustom,//普通样式
     CodeViewTypeSecret//密码风格

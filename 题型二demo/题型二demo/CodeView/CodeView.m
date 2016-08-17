@@ -11,9 +11,10 @@
 #import "CodeView.h"
 #import "NSString+Category.h"
 
-#define Space 5
-#define LineWidth (self.frame.size.width - lineNum * 2 * Space)/lineNum
-#define LineHeight 2
+
+
+#define kScreenWidth    [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight   [UIScreen mainScreen].bounds.size.height
 
 //下标线距离底部高度
 #define LineBottomHeight 5
@@ -55,6 +56,13 @@
 }
 -(void)setWithNum:(NSInteger)num{
     textArray = [NSMutableArray arrayWithCapacity:num];
+    CGRect rect = self.frame;
+    if (num > BaseLineNum) {
+        rect.size.width = kScreenWidth * 0.8;
+    }else{
+        rect.size.width = kScreenWidth * 0.8 / BaseLineNum * num;
+    }
+    self.frame = rect;
     lineNum = num;
     [self addUnderLine];
 }

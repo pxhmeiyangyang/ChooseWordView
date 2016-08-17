@@ -10,14 +10,14 @@
 
 @implementation WordButton
 
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        [self addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return self;
-}
+//-(instancetype)initWithFrame:(CGRect)frame{
+//    if (self = [super initWithFrame:frame]) {
+////        [self addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return self;
+//}
 
--(void)click{
+-(void)animationDismiss{
     UIWindow* keyWindow       = [UIApplication sharedApplication].keyWindow;
     UILabel* label            = [[UILabel alloc]initWithFrame:self.frame];
     label.layer.masksToBounds = YES;
@@ -30,7 +30,7 @@
         //位移
         CABasicAnimation* position = [CABasicAnimation animationWithKeyPath:@"position"];
         position.fromValue         = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x, self.frame.origin.y)];
-        position.toValue           = [NSValue valueWithCGPoint:CGPointMake(20, 50)];
+        position.toValue           = [NSValue valueWithCGPoint:_toPosition];
         position.duration          = kDuration;
         position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         [label.layer addAnimation:position forKey:@"positionAnimation"];
@@ -57,7 +57,7 @@
     [UIView animateWithDuration:kDuration animations:^{
         //位移
         CABasicAnimation* position = [CABasicAnimation animationWithKeyPath:@"position"];
-        position.fromValue         = [NSValue valueWithCGPoint:CGPointMake(20, 50)];
+        position.fromValue         = [NSValue valueWithCGPoint:_toPosition];
         position.toValue           = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x, self.frame.origin.x)];
         position.duration          = kDuration;
         position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
