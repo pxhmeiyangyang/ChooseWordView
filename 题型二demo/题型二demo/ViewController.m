@@ -12,6 +12,8 @@
 
 #import "NSString+StringToWords.h"
 
+#import "WordButton.h"
+
 @interface ViewController (){
     NSString* answer;
 }
@@ -40,7 +42,7 @@
 -(void)addWords{
     NSArray* words = [answer words];
     for (int i = 0;i < words.count ; i ++) {
-        UIButton* btn = [[UIButton alloc]initWithFrame:CGRectMake(i % 4 * 50, 200 + i / 4 * 50, 30, 30)];
+        WordButton* btn = [[WordButton alloc]initWithFrame:CGRectMake(i % 4 * 50, 200 + i / 4 * 50, 30, 30)];
         btn.layer.masksToBounds = YES;
         btn.layer.cornerRadius = CGRectGetHeight(btn.frame) * 0.5;
         [btn setBackgroundColor:kBlueColor];

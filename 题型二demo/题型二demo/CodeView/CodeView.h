@@ -33,9 +33,11 @@ typedef NS_ENUM(NSInteger,CodeViewType) {
 
 @property(nonatomic,strong)NSString* content;
 
-- (instancetype)initWithFrame:(CGRect)frame
-                          num:(NSInteger)num
-                    lineColor:(UIColor *)lColor
-                     textFont:(CGFloat)font;
+
+-(instancetype)initWithFrame:(CGRect)frame
+                   LineColor:(UIColor* )lColor
+                    textFont:(CGFloat)font;
+
+-(void)setWithNum:(NSInteger)num;
 
 @end

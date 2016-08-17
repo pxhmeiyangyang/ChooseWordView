@@ -38,18 +38,11 @@
 
 @implementation CodeView
 
-- (instancetype)initWithFrame:(CGRect)frame
-                          num:(NSInteger)num
-                    lineColor:(UIColor *)lColor
-                     textFont:(CGFloat)font {
-    
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.frame = frame;
-        self.backgroundColor = [UIColor whiteColor];
-        textArray = [NSMutableArray arrayWithCapacity:num];
-        
-        lineNum = num;
+-(instancetype)initWithFrame:(CGRect)frame
+                                  LineColor:(UIColor* )lColor
+                                   textFont:(CGFloat)font;{
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor redColor];
         //数字样式是的颜色和线条颜色相同
         linecolor = textcolor = lColor;
         textFont = [UIFont boldSystemFontOfSize:font];
@@ -57,15 +50,19 @@
         //设置的字体高度小于self的高
         NSAssert(textFont.lineHeight < self.frame.size.height, @"设置的字体高度应该小于self的高");
         [self addSubview:self.textField];
-        [self addUnderLine];
+        self.textField.userInteractionEnabled = NO;
     }
-    
     return self;
+}
+-(void)setWithNum:(NSInteger)num{
+    textArray = [NSMutableArray arrayWithCapacity:num];
+    lineNum = num;
+    [self addUnderLine];
 }
 
 -(void)setContent:(NSString *)content{
     _content = content;
-    if (_content.length > 0) {
+    if (_content) {
         NSArray* words = [_content words];
         textArray = [words mutableCopy];
         _textField.text = _content;

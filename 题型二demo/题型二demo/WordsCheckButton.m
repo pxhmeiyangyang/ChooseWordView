@@ -26,24 +26,27 @@
     float height = CGRectGetHeight(self.frame);
     _image = [[UIImageView alloc]initWithFrame:CGRectMake(15, height * 0.25, height * 0.5, height * 0.5)];
     [self addSubview:_image];
-//    CodeView* view = [[CodeView alloc]initWithFrame:CGRectMake(0, height * 0.25, width * 0.2, height * 0.5) num:6 lineColor:kBlueColor textFont:height * 0.3];
+
+    view = [[CodeView alloc]initWithFrame:CGRectMake(0, 0, width * 0.5, height * 0.5) LineColor:kBlueColor textFont:height * 0.3];
+    [self addSubview:view];
+    NSLog(@"self center: x %f y %f self frame hieght %f  width %f",self.center.x,self.center.y,self.frame.size.height,self.frame.size.width);
     
+    //        view.center = self.center;
+    view.center = CGPointMake(self.center.x, height * 0.5);
+    //        view.bounds = (CGRect){CGPointZero,self.frame.size};
+    
+    NSLog(@"view center: x %f y %f view frame hieght %f  width %f",view.center.x,view.center.y,view.frame.size.height,view.frame.size.width);
+    view.hasUnderLine = YES;
 }
 
 
 -(void)setAnswer:(NSString *)answer{
-    float width = CGRectGetWidth(self.frame);
-    float height = CGRectGetHeight(self.frame);
     _answer = answer;
     NSArray* words = [_answer words];
     if (_answer.length > 0) {
-        view = [[CodeView alloc]initWithFrame:CGRectMake(0,0, width * 0.2, height * 0.5) num:words.count lineColor:kBlueColor textFont:height * 0.3];
-        [self addSubview:view];
-        view.center = CGPointMake(width * 0.25, height * 0.5);
-        view.hasUnderLine = YES;
+        [view setWithNum:words.count];
         _content = [[NSString alloc]init];
         view.content = _content;
-        [view setBackgroundColor:[UIColor redColor]];
         __block WordsCheckButton*  weakSelf = self;
         view.EndEditBlcok = ^(NSString *text){
             if (weakSelf.endEditBlock) {
@@ -55,7 +58,7 @@
 
 -(void)setContent:(NSString *)content{
     _content = content;
-    if (_content.length > 0) {
+    if (_content != nil) {
         view.content = _content;
     }
 }

@@ -19,6 +19,7 @@
 		F11772F31D6316D900AF50E4 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = F11772EF1D6316D900AF50E4 /* NSString+Category.m */; };
 		F11772F41D6316D900AF50E4 /* NSString+StringToWords.m in Sources */ = {isa = PBXBuildFile; fileRef = F11772F11D6316D900AF50E4 /* NSString+StringToWords.m */; };
 		F160C5AB1D6405F900032428 /* CodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F160C5AA1D6405F900032428 /* CodeView.m */; };
+		F160C5AE1D64326B00032428 /* WordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F160C5AD1D64326B00032428 /* WordButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		F11772F11D6316D900AF50E4 /* NSString+StringToWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringToWords.m"; sourceTree = "<group>"; };
 		F160C5A91D6405F900032428 /* CodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeView.h; sourceTree = "<group>"; };
 		F160C5AA1D6405F900032428 /* CodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeView.m; sourceTree = "<group>"; };
+		F160C5AC1D64326B00032428 /* WordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordButton.h; sourceTree = "<group>"; };
+		F160C5AD1D64326B00032428 /* WordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				F117729D1D62B78300AF50E4 /* Supporting Files */,
 				F11772D51D62C3D300AF50E4 /* WordsCheckButton.h */,
 				F11772D61D62C3D300AF50E4 /* WordsCheckButton.m */,
+				F160C5AC1D64326B00032428 /* WordButton.h */,
+				F160C5AD1D64326B00032428 /* WordButton.m */,
 			);
 			path = "题型二demo";
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				F11772D71D62C3D300AF50E4 /* WordsCheckButton.m in Sources */,
 				F117729F1D62B78300AF50E4 /* main.m in Sources */,
 				F11772F41D6316D900AF50E4 /* NSString+StringToWords.m in Sources */,
+				F160C5AE1D64326B00032428 /* WordButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
