@@ -24,7 +24,6 @@
 @interface CodeView ()<UITextFieldDelegate>
 {
     NSMutableArray *textArray;
-    
     //线的条数
     NSInteger lineNum;
     
@@ -145,6 +144,12 @@
 
 //添加下划线
 - (void)addUnderLine {
+    if (_underlineArr.count > 0) {
+        for (CAShapeLayer *obj in _underlineArr) {
+            [obj removeFromSuperlayer];
+        }
+        [_underlineArr removeAllObjects];
+    }
     for (NSInteger i = _textField.text.length; i < lineNum; i ++) {
         CAShapeLayer *line = [CAShapeLayer layer];
         line.fillColor = linecolor.CGColor;

@@ -44,12 +44,6 @@
     _titleLabel.text  = _titles[_index];
     _answer           = _answers[_index];
     _checkBtn.answer  = _answer;
-    if (_allAddButtons.count > 0) {
-        for (WordButton* btn in _allAddButtons) {
-            [btn removeFromSuperview];
-        }
-        [_allAddButtons removeAllObjects];
-    }
     [self addWords];
     _index ++;
     if (_index == _titles.count) {
@@ -61,6 +55,12 @@
 }
 
 -(void)addWords{
+    if (_allAddButtons.count > 0) {
+        for (WordButton* btn in _allAddButtons) {
+            [btn removeFromSuperview];
+        }
+        [_allAddButtons removeAllObjects];
+    }
     NSArray* words = [_answer words];
     for (int i = 0;i < words.count ; i ++) {
         WordButton* btn = [[WordButton alloc]initWithFrame:CGRectMake(i % 4 * 50, 200 + i / 4 * 50, 30, 30)];
