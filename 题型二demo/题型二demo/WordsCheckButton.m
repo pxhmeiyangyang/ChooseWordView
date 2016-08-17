@@ -28,6 +28,7 @@
     [self addSubview:_image];
 
     view = [[CodeView alloc]initWithFrame:CGRectMake(0, 0, width * 0.5, height * 0.5) LineColor:kBlueColor textFont:height * 0.3];
+    view.userInteractionEnabled = NO;
     [self addSubview:view];
     NSLog(@"self center: x %f y %f self frame hieght %f  width %f",self.center.x,self.center.y,self.frame.size.height,self.frame.size.width);
     

@@ -21,7 +21,7 @@
 //密码风格 圆点半径
 #define RADIUS 5
 
-@interface CodeView ()<UITextFieldDelegate>
+@interface CodeView ()
 {
     NSMutableArray *textArray;
     //线的条数
