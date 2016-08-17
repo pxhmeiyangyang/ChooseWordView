@@ -20,6 +20,7 @@
     NSArray* _titles;
     NSInteger _index;
     NSMutableArray* _allAddButtons;
+    NSMutableArray* _chooseBtnIndex;
 }
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet WordsCheckButton *checkBtn;
@@ -44,6 +45,7 @@
     _titleLabel.text  = _titles[_index];
     _answer           = _answers[_index];
     _checkBtn.answer  = _answer;
+    [_chooseBtnIndex removeAllObjects];
     [self addWords];
     _index ++;
     if (_index == _titles.count) {
@@ -78,18 +80,20 @@
      NSLog(@"_allAddButtons count : %ld",_allAddButtons.count);
 }
 
--(void)btnAction:(UIButton* )sender{
+-(void)btnAction:(WordButton* )sender{
     NSLog(@"button tag:%ld",sender.tag);
-    NSArray* words = [_answer words];
-     NSString* word = words[sender.tag];
+    NSArray* words    = [_answer words];
+    NSString* word    = words[sender.tag];
     _checkBtn.content = [_checkBtn.content stringByAppendingString:word];
+    [_chooseBtnIndex addObject:[NSNumber numberWithInteger:sender.tag]];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _answers         = @[@"book",@"good",@"watermelon",@"Police",@"Congratulation"];
-    _titles          = @[@"书",@"好",@"西瓜",@"警察",@"祝贺"];
-    _allAddButtons   = [NSMutableArray array];
+    _answers        = @[@"book",@"good",@"watermelon",@"Police",@"Congratulation"];
+    _titles         = @[@"书",@"好",@"西瓜",@"警察",@"祝贺"];
+    _allAddButtons  = [NSMutableArray array];
+    _chooseBtnIndex = [NSMutableArray array];
     [self resetData];
     [_checkBtn addTarget:self action:@selector(checkBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     _checkBtn.endEditBlock = ^(NSString *text){
@@ -108,6 +112,10 @@
     if (sender.content.length > 0) {
         NSString* content = sender.content;
         sender.content = [content substringToIndex:content.length - 1];
+        NSInteger index = [[_chooseBtnIndex lastObject] integerValue];
+        [_chooseBtnIndex removeLastObject];
+        WordButton* btn = _allAddButtons[index];
+        [btn animationShow:btn];
     }
 }
 

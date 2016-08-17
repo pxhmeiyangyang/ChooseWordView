@@ -68,7 +68,7 @@
     self.layer.borderWidth = 1.0;
     switch (btnType) {
         case 0:
-            self.titleLabel.text = @"";
+            [self setTitle:@"" forState:UIControlStateNormal];
             self.answer  = @"";
             self.content = @"";
             [self setBackgroundColor:[UIColor clearColor]];

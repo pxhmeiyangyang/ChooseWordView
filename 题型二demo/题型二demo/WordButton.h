@@ -12,5 +12,6 @@
 
 @interface WordButton : UIButton
 
+-(void)animationShow:(WordButton* )sender;
 
 @end
