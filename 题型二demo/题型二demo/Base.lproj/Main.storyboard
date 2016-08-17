@@ -40,6 +40,13 @@
                                     <constraint firstAttribute="height" constant="50" id="83g-AX-8Ua"/>
                                 </constraints>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEx-GO-9MO">
+                                <rect key="frame" x="509" y="7" width="30" height="30"/>
+                                <state key="normal" title="刷新"/>
+                                <connections>
+                                    <action selector="update:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1WO-NN-Mfv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -48,6 +55,9 @@
                             <constraint firstItem="lsm-cw-cCn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="EJW-pP-5vk"/>
                             <constraint firstItem="8Ov-lg-gwF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="FmN-Rq-Xn7"/>
                             <constraint firstAttribute="trailing" secondItem="8Ov-lg-gwF" secondAttribute="trailing" constant="20" id="GiI-fD-Cwy"/>
+                            <constraint firstAttribute="trailing" secondItem="hEx-GO-9MO" secondAttribute="trailing" constant="61" id="Q1R-ZU-pSX"/>
+                            <constraint firstItem="ki0-eX-0UL" firstAttribute="top" secondItem="hEx-GO-9MO" secondAttribute="bottom" constant="8" id="TNl-jo-OKS"/>
+                            <constraint firstItem="hEx-GO-9MO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="7" id="deM-i5-cwG"/>
                             <constraint firstItem="ki0-eX-0UL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="fys-Z4-KkT"/>
                             <constraint firstAttribute="trailing" secondItem="lsm-cw-cCn" secondAttribute="trailing" id="lMs-T3-OIJ"/>
                             <constraint firstAttribute="trailing" secondItem="ki0-eX-0UL" secondAttribute="trailing" id="lah-Cc-zwJ"/>

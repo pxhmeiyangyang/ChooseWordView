@@ -15,7 +15,11 @@
 #import "WordButton.h"
 
 @interface ViewController (){
-    NSString* answer;
+    NSString* _answer;
+    NSArray* _answers;
+    NSArray* _titles;
+    NSInteger _index;
+    NSMutableArray* _allAddButtons;
 }
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet WordsCheckButton *checkBtn;
@@ -37,10 +41,27 @@
 
 -(void)resetData{
     _checkBtn.btnType = btnNomal;
+    _titleLabel.text  = _titles[_index];
+    _answer           = _answers[_index];
+    _checkBtn.answer  = _answer;
+    if (_allAddButtons.count > 0) {
+        for (WordButton* btn in _allAddButtons) {
+            [btn removeFromSuperview];
+        }
+        [_allAddButtons removeAllObjects];
+    }
+    [self addWords];
+    _index ++;
+    if (_index == _titles.count) {
+        _index = 0;
+    }
+}
+- (IBAction)update:(id)sender {
+    [self resetData];
 }
 
 -(void)addWords{
-    NSArray* words = [answer words];
+    NSArray* words = [_answer words];
     for (int i = 0;i < words.count ; i ++) {
         WordButton* btn = [[WordButton alloc]initWithFrame:CGRectMake(i % 4 * 50, 200 + i / 4 * 50, 30, 30)];
         btn.layer.masksToBounds = YES;
@@ -52,33 +73,33 @@
         [btn setTitle:word forState:UIControlStateHighlighted];
         [btn setTag:i];
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_allAddButtons addObject:btn];
     }
+     NSLog(@"_allAddButtons count : %ld",_allAddButtons.count);
 }
 
 -(void)btnAction:(UIButton* )sender{
     NSLog(@"button tag:%ld",sender.tag);
-    NSArray* words = [answer words];
+    NSArray* words = [_answer words];
      NSString* word = words[sender.tag];
     _checkBtn.content = [_checkBtn.content stringByAppendingString:word];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _titleLabel.text = @"西瓜";
-    answer = @"watermelon";
-    _checkBtn.answer = answer;
-    [_checkBtn addTarget:self action:@selector(checkBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    // Do any additional setup after loading the view, typically from a nib.
+    _answers         = @[@"book",@"good",@"watermelon",@"Police",@"Congratulation"];
+    _titles          = @[@"书",@"好",@"西瓜",@"警察",@"祝贺"];
+    _allAddButtons   = [NSMutableArray array];
     [self resetData];
-    [self addWords];
+    [_checkBtn addTarget:self action:@selector(checkBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     _checkBtn.endEditBlock = ^(NSString *text){
         NSLog(@"end text:%@",text);
-        if ([text isEqualToString:answer]) {
+        if ([text isEqualToString:_answer]) {
             _checkBtn.btnType = btnRight;
-            [_checkBtn setTitle:answer forState:UIControlStateNormal];
+            [_checkBtn setTitle:_answer forState:UIControlStateNormal];
         }else{
             _checkBtn.btnType =btnEorror;
-            [_checkBtn setTitle:answer forState:UIControlStateNormal];
+            [_checkBtn setTitle:_answer forState:UIControlStateNormal];
         }
     };
 }
