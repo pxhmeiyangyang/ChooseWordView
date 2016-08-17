@@ -109,13 +109,18 @@
 }
 
 -(void)checkBtnAction:(WordsCheckButton* )sender{
+    //为了保证动画显示完整 点击之后动画显示时间 不能再次点击
     if (sender.content.length > 0) {
+        sender.enabled = NO;
         NSString* content = sender.content;
         sender.content = [content substringToIndex:content.length - 1];
         NSInteger index = [[_chooseBtnIndex lastObject] integerValue];
         [_chooseBtnIndex removeLastObject];
         WordButton* btn = _allAddButtons[index];
-        [btn animationShow:btn];
+        [btn animationShow];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            sender.enabled = YES;
+        });
     }
 }
 

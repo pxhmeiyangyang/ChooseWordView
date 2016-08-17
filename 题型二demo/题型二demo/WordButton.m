@@ -20,7 +20,6 @@
 -(void)click{
     UIWindow* keyWindow       = [UIApplication sharedApplication].keyWindow;
     UILabel* label            = [[UILabel alloc]initWithFrame:self.frame];
-//    label.center              = self.center;
     label.layer.masksToBounds = YES;
     label.layer.cornerRadius  = CGRectGetHeight(label.frame) * 0.5;
     label.textAlignment       = NSTextAlignmentCenter;
@@ -38,13 +37,13 @@
         //缩放
         label.transform            = CGAffineTransformMakeScale(0.1, 0.1);
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kDuration - 0.3) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kDuration - 0.15) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [label removeFromSuperview];
     });
     [self setHidden:YES];
 }
 
--(void)animationShow:(WordButton* )sender{
+-(void)animationShow{
     UIWindow* keyWindow       = [UIApplication sharedApplication].keyWindow;
     UILabel* label            = [[UILabel alloc]initWithFrame:CGRectMake(20, 50, self.frame.size.width, self.frame.size.height)];
     label.layer.masksToBounds = YES;
@@ -66,9 +65,9 @@
         //缩放
         label.transform            = CGAffineTransformMakeScale(1.0, 1.0);
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kDuration - 0.3) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kDuration - 0.15) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [label removeFromSuperview];
-        [sender setHidden:NO];
+        [self setHidden:NO];
     });
 }
 

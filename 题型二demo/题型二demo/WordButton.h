@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#define kDuration 2.0
+#define kDuration 1.0
 
 @interface WordButton : UIButton
 
--(void)animationShow:(WordButton* )sender;
+-(void)animationShow;
 
 @end
