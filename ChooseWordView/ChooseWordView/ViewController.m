@@ -23,6 +23,7 @@
     NSMutableArray* _chooseBtnIndex;
 }
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet WordsCheckButton *checkBtn;
 
 @end
@@ -78,6 +79,10 @@
 }
 
 -(void)addWords{
+    
+    //计算可显示button的区域
+    
+    
     if (_allAddButtons.count > 0) {
         for (WordButton* btn in _allAddButtons) {
             [btn removeFromSuperview];
