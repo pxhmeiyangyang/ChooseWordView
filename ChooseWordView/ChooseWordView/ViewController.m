@@ -40,6 +40,27 @@
     _checkBtn.layer.cornerRadius = CGRectGetHeight(_checkBtn.bounds) * 0.5;
 }
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _answers        = @[@"book",@"good",@"watermelon",@"Police",@"Congratulation"];
+    _titles         = @[@"书",@"好",@"西瓜",@"警察",@"祝贺"];
+    _allAddButtons  = [NSMutableArray array];
+    _chooseBtnIndex = [NSMutableArray array];
+    [self resetData];
+    [_checkBtn addTarget:self action:@selector(checkBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    _checkBtn.endEditBlock = ^(NSString *text){
+        NSLog(@"end text:%@",text);
+        if ([text isEqualToString:_answer]) {
+            _checkBtn.btnType = btnRight;
+            [_checkBtn setTitle:_answer forState:UIControlStateNormal];
+        }else{
+            _checkBtn.btnType =btnEorror;
+            [_checkBtn setTitle:_answer forState:UIControlStateNormal];
+        }
+    };
+}
+
 -(void)resetData{
     _checkBtn.btnType = btnNomal;
     _titleLabel.text  = _titles[_index];
@@ -77,7 +98,7 @@
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         [_allAddButtons addObject:btn];
     }
-     NSLog(@"_allAddButtons count : %ld",_allAddButtons.count);
+    NSLog(@"_allAddButtons count : %ld",_allAddButtons.count);
 }
 
 -(void)btnAction:(WordButton* )sender{
@@ -87,31 +108,25 @@
     _checkBtn.content = [_checkBtn.content stringByAppendingString:word];
     [_chooseBtnIndex addObject:[NSNumber numberWithInteger:sender.tag]];
     //计算button的终点位置
-    float xRatio = kScreenWidth * 0.5 - kScreenWidth * 0.8 / 15.0 * words.count * 0.5;
+    float xRatio = [self getOriginXWithNum:words.count Index:_chooseBtnIndex.count];
     float yRatio = _checkBtn.center.y;
     sender.toPosition = CGPointMake(xRatio, yRatio);
     [sender animationDismiss];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    _answers        = @[@"book",@"good",@"watermelon",@"Police",@"Congratulation"];
-    _titles         = @[@"书",@"好",@"西瓜",@"警察",@"祝贺"];
-    _allAddButtons  = [NSMutableArray array];
-    _chooseBtnIndex = [NSMutableArray array];
-    [self resetData];
-    [_checkBtn addTarget:self action:@selector(checkBtnAction:) forControlEvents:UIControlEventTouchUpInside];
-    _checkBtn.endEditBlock = ^(NSString *text){
-        NSLog(@"end text:%@",text);
-        if ([text isEqualToString:_answer]) {
-            _checkBtn.btnType = btnRight;
-            [_checkBtn setTitle:_answer forState:UIControlStateNormal];
-        }else{
-            _checkBtn.btnType =btnEorror;
-            [_checkBtn setTitle:_answer forState:UIControlStateNormal];
-        }
-    };
+-(float)getOriginXWithNum:(NSInteger)num Index:(NSInteger)index{
+    float codeViewWidth = 0.0;
+    //计算codeView的宽度
+    if (num > kBaseLineNum) {
+        codeViewWidth = kScreenWidth * 0.8;
+    }else{
+        codeViewWidth = kScreenWidth * 0.8 / kBaseLineNum * num;
+    }
+    //计算起点位置(codeView的起点位置 + 每个显示字符长度的一半)
+    float codeOriginX = (kScreenWidth - codeViewWidth) * 0.5 + codeViewWidth / num * (index - 0.45);
+    return codeOriginX;
 }
+
 
 -(void)checkBtnAction:(WordsCheckButton* )sender{
     //为了保证动画显示完整 点击之后动画显示时间 不能再次点击

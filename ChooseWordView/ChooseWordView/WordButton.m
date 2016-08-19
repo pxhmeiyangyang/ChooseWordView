@@ -25,7 +25,7 @@
         position.fromValue         = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x, self.frame.origin.y)];
         position.toValue           = [NSValue valueWithCGPoint:_toPosition];
         position.duration          = kDuration;
-        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
         [label.layer addAnimation:position forKey:@"positionAnimation"];
         //缩放
         label.transform            = CGAffineTransformMakeScale(0.1, 0.1);
@@ -53,7 +53,7 @@
         position.fromValue         = [NSValue valueWithCGPoint:_toPosition];
         position.toValue           = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x, self.frame.origin.x)];
         position.duration          = kDuration;
-        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
         [label.layer addAnimation:position forKey:@"positionAnimation"];
         //缩放
         label.transform            = CGAffineTransformMakeScale(1.0, 1.0);
