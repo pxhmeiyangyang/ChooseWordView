@@ -87,6 +87,7 @@
     NSArray* words = [_answer words];
     for (int i = 0;i < words.count ; i ++) {
         WordButton* btn = [[WordButton alloc]initWithFrame:CGRectMake(i % 4 * 50, 200 + i / 4 * 50, 30, 30)];
+        btn.fromPosition = btn.center;
         btn.layer.masksToBounds = YES;
         btn.layer.cornerRadius = CGRectGetHeight(btn.frame) * 0.5;
         [btn setBackgroundColor:kBlueColor];

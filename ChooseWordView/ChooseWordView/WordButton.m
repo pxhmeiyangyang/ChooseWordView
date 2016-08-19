@@ -22,10 +22,10 @@
     [UIView animateWithDuration:kDuration animations:^{
         //位移
         CABasicAnimation* position = [CABasicAnimation animationWithKeyPath:@"position"];
-        position.fromValue         = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x, self.frame.origin.y)];
+        position.fromValue         = [NSValue valueWithCGPoint:_fromPosition];
         position.toValue           = [NSValue valueWithCGPoint:_toPosition];
         position.duration          = kDuration;
-        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
         [label.layer addAnimation:position forKey:@"positionAnimation"];
         //缩放
         label.transform            = CGAffineTransformMakeScale(0.1, 0.1);
@@ -38,7 +38,7 @@
 
 -(void)animationShow{
     UIWindow* keyWindow       = [UIApplication sharedApplication].keyWindow;
-    UILabel* label            = [[UILabel alloc]initWithFrame:CGRectMake(20, 50, self.frame.size.width, self.frame.size.height)];
+    UILabel* label            = [[UILabel alloc]initWithFrame:CGRectMake(_toPosition.x, _toPosition.y, self.frame.size.width, self.frame.size.height)];
     label.layer.masksToBounds = YES;
     label.layer.cornerRadius  = CGRectGetHeight(label.frame) * 0.5;
     label.textAlignment       = NSTextAlignmentCenter;
@@ -51,9 +51,9 @@
         //位移
         CABasicAnimation* position = [CABasicAnimation animationWithKeyPath:@"position"];
         position.fromValue         = [NSValue valueWithCGPoint:_toPosition];
-        position.toValue           = [NSValue valueWithCGPoint:CGPointMake(self.frame.origin.x, self.frame.origin.x)];
+        position.toValue           = [NSValue valueWithCGPoint:_fromPosition];
         position.duration          = kDuration;
-        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        position.timingFunction    = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
         [label.layer addAnimation:position forKey:@"positionAnimation"];
         //缩放
         label.transform            = CGAffineTransformMakeScale(1.0, 1.0);

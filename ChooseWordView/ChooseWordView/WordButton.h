@@ -12,7 +12,7 @@
 
 @interface WordButton : UIButton
 
-
+@property(nonatomic,assign)CGPoint fromPosition;
 @property(nonatomic,assign)CGPoint toPosition;
 
 -(void)animationShow;
