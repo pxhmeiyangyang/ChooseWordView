@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  题型二demo
+//
+//  Created by pxh on 16/8/19.
+//  Copyright © 2016年 裴新华. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define kBlueColor     [UIColor colorWithRed:96/255.0 green:189/255.0 blue:250/255.0 alpha:1.0]
+#define kGreenColor    [UIColor colorWithRed:122/255.0 green:205/255.0 blue:137/255.0 alpha:1.0]
+#define kRedColor      [UIColor colorWithRed:255/255.0 green:102/255.0 blue:102/255.0 alpha:1.0]
+
+#define kScreenWidth    [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight   [UIScreen mainScreen].bounds.size.height
+
+#endif /* PrefixHeader_pch */
