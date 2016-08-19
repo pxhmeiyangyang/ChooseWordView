@@ -17,7 +17,8 @@
     label.layer.cornerRadius  = CGRectGetHeight(label.frame) * 0.5;
     label.textAlignment       = NSTextAlignmentCenter;
     label.text                = self.titleLabel.text;
-    [label setBackgroundColor:[UIColor redColor]];
+    label.textColor           = self.titleLabel.textColor;
+    [label setBackgroundColor:self.backgroundColor];
     [keyWindow addSubview:label];
     [UIView animateWithDuration:kDuration animations:^{
         //位移
@@ -43,7 +44,8 @@
     label.layer.cornerRadius  = CGRectGetHeight(label.frame) * 0.5;
     label.textAlignment       = NSTextAlignmentCenter;
     label.text                = self.titleLabel.text;
-    [label setBackgroundColor:[UIColor redColor]];
+    label.textColor           = self.titleLabel.textColor;
+    [label setBackgroundColor:self.backgroundColor];
     //缩放
     label.transform           = CGAffineTransformMakeScale(0.1, 0.1);
     [keyWindow addSubview:label];
