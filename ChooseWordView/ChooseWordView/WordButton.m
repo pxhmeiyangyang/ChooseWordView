@@ -10,13 +10,6 @@
 
 @implementation WordButton
 
-//-(instancetype)initWithFrame:(CGRect)frame{
-//    if (self = [super initWithFrame:frame]) {
-////        [self addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return self;
-//}
-
 -(void)animationDismiss{
     UIWindow* keyWindow       = [UIApplication sharedApplication].keyWindow;
     UILabel* label            = [[UILabel alloc]initWithFrame:self.frame];

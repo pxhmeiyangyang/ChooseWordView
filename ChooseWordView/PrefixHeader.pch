@@ -9,11 +9,22 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+
+
+//color
 #define kBlueColor     [UIColor colorWithRed:96/255.0 green:189/255.0 blue:250/255.0 alpha:1.0]
 #define kGreenColor    [UIColor colorWithRed:122/255.0 green:205/255.0 blue:137/255.0 alpha:1.0]
 #define kRedColor      [UIColor colorWithRed:255/255.0 green:102/255.0 blue:102/255.0 alpha:1.0]
 
+//rect
 #define kScreenWidth    [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight   [UIScreen mainScreen].bounds.size.height
+
+
+#define kSpace 5
+#define kLineWidth (self.frame.size.width - lineNum * 2 * kSpace)/lineNum
+#define kLineHeight 2
+
+#define kBaseLineNum 15.0
 
 #endif /* PrefixHeader_pch */

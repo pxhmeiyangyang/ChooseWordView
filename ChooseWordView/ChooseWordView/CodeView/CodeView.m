@@ -12,10 +12,6 @@
 #import "NSString+Category.h"
 
 
-
-#define kScreenWidth    [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight   [UIScreen mainScreen].bounds.size.height
-
 //下标线距离底部高度
 #define LineBottomHeight 5
 
@@ -57,10 +53,10 @@
 -(void)setWithNum:(NSInteger)num{
     textArray = [NSMutableArray arrayWithCapacity:num];
     CGRect rect = self.frame;
-    if (num > BaseLineNum) {
+    if (num > kBaseLineNum) {
         rect.size.width = kScreenWidth * 0.8;
     }else{
-        rect.size.width = kScreenWidth * 0.8 / BaseLineNum * num;
+        rect.size.width = kScreenWidth * 0.8 / kBaseLineNum * num;
     }
     self.frame = rect;
     lineNum = num;
@@ -161,7 +157,7 @@
     for (NSInteger i = _textField.text.length; i < lineNum; i ++) {
         CAShapeLayer *line = [CAShapeLayer layer];
         line.fillColor = linecolor.CGColor;
-        UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(Space * (2 *i + 1) + i * LineWidth, self.frame.size.height - LineBottomHeight, LineWidth, LineHeight)];
+        UIBezierPath *path = [UIBezierPath bezierPathWithRect:CGRectMake(kSpace * (2 *i + 1) + i * kLineWidth, self.frame.size.height - LineBottomHeight, kLineWidth, kLineHeight)];
         line.path = path.CGPath;
         line.hidden = NO;
         [self.layer addSublayer:line];
@@ -207,7 +203,7 @@
                 //起点
                 CGFloat startX = self.frame.size.width/lineNum * i + (self.frame.size.width/lineNum - wordWidth)/2;
                 
-                [num drawInRect:CGRectMake(startX, (self.frame.size.height - textFont.lineHeight - LineBottomHeight - LineHeight)/2, wordWidth,  textFont.lineHeight + 5) withAttributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:textcolor}];
+                [num drawInRect:CGRectMake(startX, (self.frame.size.height - textFont.lineHeight - LineBottomHeight - kLineHeight)/2, wordWidth,  textFont.lineHeight + 5) withAttributes:@{NSFontAttributeName:textFont,NSForegroundColorAttributeName:textcolor}];
             }
             CGContextDrawPath(context, kCGPathFill);
         }
