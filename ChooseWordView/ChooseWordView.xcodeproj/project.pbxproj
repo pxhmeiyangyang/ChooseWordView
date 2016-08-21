@@ -20,7 +20,6 @@
 		F1CAAA191D66E1F700FCC346 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1CAAA171D66E1F700FCC346 /* LaunchScreen.storyboard */; };
 		F1CAAA241D66E1F700FCC346 /* ChooseWordViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CAAA231D66E1F700FCC346 /* ChooseWordViewTests.m */; };
 		F1CAAA2F1D66E1F700FCC346 /* ChooseWordViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1CAAA2E1D66E1F700FCC346 /* ChooseWordViewUITests.m */; };
-		F1D7F4061D671869000426A6 /* UIView+FourSquarePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D7F4051D671869000426A6 /* UIView+FourSquarePoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +67,6 @@
 		F1CAAA2A1D66E1F700FCC346 /* ChooseWordViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChooseWordViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1CAAA2E1D66E1F700FCC346 /* ChooseWordViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseWordViewUITests.m; sourceTree = "<group>"; };
 		F1CAAA301D66E1F700FCC346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1D7F4041D671869000426A6 /* UIView+FourSquarePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FourSquarePoint.h"; sourceTree = "<group>"; };
-		F1D7F4051D671869000426A6 /* UIView+FourSquarePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FourSquarePoint.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +145,6 @@
 				F1CAAA171D66E1F700FCC346 /* LaunchScreen.storyboard */,
 				F1CAAA1A1D66E1F700FCC346 /* Info.plist */,
 				F1CAAA091D66E1F700FCC346 /* Supporting Files */,
-				F1D7F4041D671869000426A6 /* UIView+FourSquarePoint.h */,
-				F1D7F4051D671869000426A6 /* UIView+FourSquarePoint.m */,
 			);
 			path = ChooseWordView;
 			sourceTree = "<group>";
@@ -310,7 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1D7F4061D671869000426A6 /* UIView+FourSquarePoint.m in Sources */,
 				F1C66A0A1D66E2F2000FB522 /* WordButton.m in Sources */,
 				F1C66A021D66E2D9000FB522 /* ViewController.m in Sources */,
 				F1C669FF1D66E2D9000FB522 /* CodeView.m in Sources */,
