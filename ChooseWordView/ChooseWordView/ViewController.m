@@ -79,32 +79,63 @@
 }
 
 -(void)addWords{
-    
     //计算可显示button的区域
+    CGFloat rectTopY = self.tipLabel.frame.origin.y + self.tipLabel.frame.size.height * 1.5;
     
+    CGRect showRect;
+    showRect.origin.x = 15;
+    showRect.origin.y = rectTopY;
+    showRect.size.width = kScreenWidth - 30;
+    showRect.size.height = kScreenHeight - rectTopY - self.checkBtn.frame.size.height * 1.9;
     
-    if (_allAddButtons.count > 0) {
-        for (WordButton* btn in _allAddButtons) {
-            [btn removeFromSuperview];
-        }
-        [_allAddButtons removeAllObjects];
-    }
     NSArray* words = [_answer words];
-    for (int i = 0;i < words.count ; i ++) {
-        WordButton* btn = [[WordButton alloc]initWithFrame:CGRectMake(i % 4 * 50, 200 + i / 4 * 50, 30, 30)];
+    NSInteger count = 0;
+    for (int i = 0; i < 1000; i ++) {
+        if ((i - 1) * (i - 1) <= words.count && i * i > words.count) {
+            count = i;
+            break;
+        }
+    }
+    NSLog(@"count :%ld",count);
+    CGFloat width = showRect.size.width / (float)count;
+    CGFloat height = showRect.size.height / (float)count;
+    CGFloat length = width < height ? width : height;
+    NSMutableArray* rectArray = [NSMutableArray array];
+    for (int j = 0; j < count * count; j ++) {
+        CGRect rect = CGRectMake(showRect.origin.x + j / count * width, showRect.origin.y + j % count * height, length, length);
+        CGRect rect1 = CGRectMake(showRect.origin.x + j / count * width, showRect.origin.y + j % count * height, width - 1, height - 1);
+        UIView* view = [[UIView alloc]initWithFrame:rect1];
+        [self.view addSubview:view];
+        [view setBackgroundColor:[UIColor greenColor]];
+        NSValue* value = [NSValue valueWithCGRect:rect];
+        [rectArray addObject:value];
+    }
+    //从所有的数组中选取响应的位置
+    NSMutableArray* showRectArray = [NSMutableArray array];
+    do{
+        NSInteger index = arc4random() % rectArray.count;
+        NSValue* value = rectArray[index];
+        if (![showRectArray containsObject:value]) {
+            [showRectArray addObject:value];
+        }
+    }while (showRectArray.count < words.count);
+    
+    for (int a = 0; a < showRectArray.count;a ++) {
+        NSValue* value = showRectArray[a];
+        CGRect rect = [value CGRectValue];
+        WordButton* btn = [[WordButton alloc]initWithFrame:rect];
         btn.fromPosition = btn.center;
         btn.layer.masksToBounds = YES;
         btn.layer.cornerRadius = CGRectGetHeight(btn.frame) * 0.5;
         [btn setBackgroundColor:kBlueColor];
         [self.view addSubview:btn];
-        NSString* word = words[i];
+        NSString* word = words[a];
         [btn setTitle:word forState:UIControlStateNormal];
         [btn setTitle:word forState:UIControlStateHighlighted];
-        [btn setTag:i];
+        [btn setTag:a];
         [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
         [_allAddButtons addObject:btn];
     }
-    NSLog(@"_allAddButtons count : %ld",_allAddButtons.count);
 }
 
 -(void)btnAction:(WordButton* )sender{
