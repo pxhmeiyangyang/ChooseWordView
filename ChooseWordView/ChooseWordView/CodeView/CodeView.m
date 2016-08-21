@@ -38,7 +38,7 @@
                                   LineColor:(UIColor* )lColor
                                    textFont:(CGFloat)font;{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor clearColor];
         //数字样式是的颜色和线条颜色相同
         linecolor = textcolor = lColor;
         textFont = [UIFont boldSystemFontOfSize:font];
