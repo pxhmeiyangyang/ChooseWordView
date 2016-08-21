@@ -79,6 +79,10 @@
 }
 
 -(void)addWords{
+    for (WordButton* btn in _allAddButtons) {
+        [btn removeFromSuperview];
+    }
+    [_allAddButtons removeAllObjects];
     //计算可显示button的区域
     CGFloat rectTopY = self.tipLabel.frame.origin.y + self.tipLabel.frame.size.height * 1.5;
     
@@ -102,11 +106,21 @@
     CGFloat length = width < height ? width : height;
     NSMutableArray* rectArray = [NSMutableArray array];
     for (int j = 0; j < count * count; j ++) {
-        CGRect rect = CGRectMake(showRect.origin.x + j / count * width, showRect.origin.y + j % count * height, length, length);
-        CGRect rect1 = CGRectMake(showRect.origin.x + j / count * width, showRect.origin.y + j % count * height, width - 1, height - 1);
-        UIView* view = [[UIView alloc]initWithFrame:rect1];
-        [self.view addSubview:view];
-        [view setBackgroundColor:[UIColor greenColor]];
+        CGRect rect;
+        CGFloat ratio;
+        if (width < height) {
+            ratio = height - width;
+            CGFloat randRatio = arc4random() % 2;
+            rect = CGRectMake(showRect.origin.x + j / count * width, showRect.origin.y + j % count * height + randRatio * ratio, length, length);
+        }else{
+            ratio = width - height;
+            CGFloat randRatio = arc4random() % 2;
+            rect = CGRectMake(showRect.origin.x + j / count * width + randRatio * ratio, showRect.origin.y + j % count * height, length, length);
+        }
+//        CGRect rect1 = CGRectMake(showRect.origin.x + j / count * width, showRect.origin.y + j % count * height, width - 1, height - 1);
+//        UIView* view = [[UIView alloc]initWithFrame:rect1];
+//        [self.view addSubview:view];
+//        [view setBackgroundColor:[UIColor greenColor]];
         NSValue* value = [NSValue valueWithCGRect:rect];
         [rectArray addObject:value];
     }
